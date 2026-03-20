@@ -1,0 +1,256 @@
+--
+-- PostgreSQL database dump (cleaned for pgAdmin Query Tool)
+--
+
+-- Dumped from database version 18.3
+-- Dumped by pg_dump version 18.3
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+SET default_table_access_method = heap;
+
+CREATE TABLE public.danh_gia_ncc (
+    ma_danh_gia integer NOT NULL,
+    ma_ncc integer,
+    ma_tieu_chi integer,
+    diem double precision
+);
+
+ALTER TABLE public.danh_gia_ncc OWNER TO postgres;
+
+CREATE SEQUENCE public.danh_gia_ncc_ma_danh_gia_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.danh_gia_ncc_ma_danh_gia_seq OWNER TO postgres;
+
+ALTER SEQUENCE public.danh_gia_ncc_ma_danh_gia_seq
+    OWNED BY public.danh_gia_ncc.ma_danh_gia;
+
+CREATE TABLE public.du_lieu_rf (
+    ma_du_lieu integer NOT NULL,
+    gia double precision,
+    chat_luong double precision,
+    thoi_gian_giao_hang double precision,
+    uy_tin double precision,
+    nang_luc_cung_ung double precision,
+    tinh_linh_hoat double precision,
+    dieu_kien_thanh_toan double precision,
+    dich_vu_ho_tro double precision,
+    ket_qua integer
+);
+
+ALTER TABLE public.du_lieu_rf OWNER TO postgres;
+
+CREATE SEQUENCE public.du_lieu_rf_ma_du_lieu_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.du_lieu_rf_ma_du_lieu_seq OWNER TO postgres;
+
+ALTER SEQUENCE public.du_lieu_rf_ma_du_lieu_seq
+    OWNED BY public.du_lieu_rf.ma_du_lieu;
+
+CREATE TABLE public.ket_qua_quyet_dinh (
+    ma_ket_qua integer NOT NULL,
+    ma_ncc integer,
+    diem_ahp double precision,
+    du_doan_rf double precision,
+    diem_tong double precision,
+    ket_luan character varying(50)
+);
+
+ALTER TABLE public.ket_qua_quyet_dinh OWNER TO postgres;
+
+CREATE SEQUENCE public.ket_qua_quyet_dinh_ma_ket_qua_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.ket_qua_quyet_dinh_ma_ket_qua_seq OWNER TO postgres;
+
+ALTER SEQUENCE public.ket_qua_quyet_dinh_ma_ket_qua_seq
+    OWNED BY public.ket_qua_quyet_dinh.ma_ket_qua;
+
+CREATE TABLE public.nha_cung_cap (
+    ma_ncc integer NOT NULL,
+    ten_ncc character varying(255) NOT NULL,
+    dia_chi text,
+    so_dien_thoai character varying(20),
+    email character varying(100),
+    mo_ta text
+);
+
+ALTER TABLE public.nha_cung_cap OWNER TO postgres;
+
+CREATE SEQUENCE public.nha_cung_cap_ma_ncc_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.nha_cung_cap_ma_ncc_seq OWNER TO postgres;
+
+ALTER SEQUENCE public.nha_cung_cap_ma_ncc_seq
+    OWNED BY public.nha_cung_cap.ma_ncc;
+
+CREATE TABLE public.so_sanh_cap_ahp (
+    ma_so_sanh integer NOT NULL,
+    tieu_chi_1 integer,
+    tieu_chi_2 integer,
+    gia_tri double precision
+);
+
+ALTER TABLE public.so_sanh_cap_ahp OWNER TO postgres;
+
+CREATE SEQUENCE public.so_sanh_cap_ahp_ma_so_sanh_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.so_sanh_cap_ahp_ma_so_sanh_seq OWNER TO postgres;
+
+ALTER SEQUENCE public.so_sanh_cap_ahp_ma_so_sanh_seq
+    OWNED BY public.so_sanh_cap_ahp.ma_so_sanh;
+
+CREATE TABLE public.tieu_chi (
+    ma_tieu_chi integer NOT NULL,
+    ten_tieu_chi character varying(255) NOT NULL,
+    mo_ta text
+);
+
+ALTER TABLE public.tieu_chi OWNER TO postgres;
+
+CREATE SEQUENCE public.tieu_chi_ma_tieu_chi_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.tieu_chi_ma_tieu_chi_seq OWNER TO postgres;
+
+ALTER SEQUENCE public.tieu_chi_ma_tieu_chi_seq
+    OWNED BY public.tieu_chi.ma_tieu_chi;
+
+CREATE TABLE public.trong_so_tieu_chi (
+    ma_trong_so integer NOT NULL,
+    ma_tieu_chi integer,
+    trong_so double precision
+);
+
+ALTER TABLE public.trong_so_tieu_chi OWNER TO postgres;
+
+CREATE SEQUENCE public.trong_so_tieu_chi_ma_trong_so_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE public.trong_so_tieu_chi_ma_trong_so_seq OWNER TO postgres;
+
+ALTER SEQUENCE public.trong_so_tieu_chi_ma_trong_so_seq
+    OWNED BY public.trong_so_tieu_chi.ma_trong_so;
+
+ALTER TABLE ONLY public.danh_gia_ncc
+    ALTER COLUMN ma_danh_gia SET DEFAULT nextval('public.danh_gia_ncc_ma_danh_gia_seq'::regclass);
+
+ALTER TABLE ONLY public.du_lieu_rf
+    ALTER COLUMN ma_du_lieu SET DEFAULT nextval('public.du_lieu_rf_ma_du_lieu_seq'::regclass);
+
+ALTER TABLE ONLY public.ket_qua_quyet_dinh
+    ALTER COLUMN ma_ket_qua SET DEFAULT nextval('public.ket_qua_quyet_dinh_ma_ket_qua_seq'::regclass);
+
+ALTER TABLE ONLY public.nha_cung_cap
+    ALTER COLUMN ma_ncc SET DEFAULT nextval('public.nha_cung_cap_ma_ncc_seq'::regclass);
+
+ALTER TABLE ONLY public.so_sanh_cap_ahp
+    ALTER COLUMN ma_so_sanh SET DEFAULT nextval('public.so_sanh_cap_ahp_ma_so_sanh_seq'::regclass);
+
+ALTER TABLE ONLY public.tieu_chi
+    ALTER COLUMN ma_tieu_chi SET DEFAULT nextval('public.tieu_chi_ma_tieu_chi_seq'::regclass);
+
+ALTER TABLE ONLY public.trong_so_tieu_chi
+    ALTER COLUMN ma_trong_so SET DEFAULT nextval('public.trong_so_tieu_chi_ma_trong_so_seq'::regclass);
+
+SELECT pg_catalog.setval('public.danh_gia_ncc_ma_danh_gia_seq', 1, false);
+SELECT pg_catalog.setval('public.du_lieu_rf_ma_du_lieu_seq', 1, false);
+SELECT pg_catalog.setval('public.ket_qua_quyet_dinh_ma_ket_qua_seq', 1, false);
+SELECT pg_catalog.setval('public.nha_cung_cap_ma_ncc_seq', 1, false);
+SELECT pg_catalog.setval('public.so_sanh_cap_ahp_ma_so_sanh_seq', 1, false);
+SELECT pg_catalog.setval('public.tieu_chi_ma_tieu_chi_seq', 1, false);
+SELECT pg_catalog.setval('public.trong_so_tieu_chi_ma_trong_so_seq', 1, false);
+
+ALTER TABLE ONLY public.danh_gia_ncc
+    ADD CONSTRAINT danh_gia_ncc_pkey PRIMARY KEY (ma_danh_gia);
+
+ALTER TABLE ONLY public.du_lieu_rf
+    ADD CONSTRAINT du_lieu_rf_pkey PRIMARY KEY (ma_du_lieu);
+
+ALTER TABLE ONLY public.ket_qua_quyet_dinh
+    ADD CONSTRAINT ket_qua_quyet_dinh_pkey PRIMARY KEY (ma_ket_qua);
+
+ALTER TABLE ONLY public.nha_cung_cap
+    ADD CONSTRAINT nha_cung_cap_pkey PRIMARY KEY (ma_ncc);
+
+ALTER TABLE ONLY public.so_sanh_cap_ahp
+    ADD CONSTRAINT so_sanh_cap_ahp_pkey PRIMARY KEY (ma_so_sanh);
+
+ALTER TABLE ONLY public.tieu_chi
+    ADD CONSTRAINT tieu_chi_pkey PRIMARY KEY (ma_tieu_chi);
+
+ALTER TABLE ONLY public.trong_so_tieu_chi
+    ADD CONSTRAINT trong_so_tieu_chi_pkey PRIMARY KEY (ma_trong_so);
+
+ALTER TABLE ONLY public.danh_gia_ncc
+    ADD CONSTRAINT danh_gia_ncc_ma_ncc_fkey
+    FOREIGN KEY (ma_ncc) REFERENCES public.nha_cung_cap(ma_ncc);
+
+ALTER TABLE ONLY public.danh_gia_ncc
+    ADD CONSTRAINT danh_gia_ncc_ma_tieu_chi_fkey
+    FOREIGN KEY (ma_tieu_chi) REFERENCES public.tieu_chi(ma_tieu_chi);
+
+ALTER TABLE ONLY public.ket_qua_quyet_dinh
+    ADD CONSTRAINT ket_qua_quyet_dinh_ma_ncc_fkey
+    FOREIGN KEY (ma_ncc) REFERENCES public.nha_cung_cap(ma_ncc);
+
+ALTER TABLE ONLY public.so_sanh_cap_ahp
+    ADD CONSTRAINT so_sanh_cap_ahp_tieu_chi_1_fkey
+    FOREIGN KEY (tieu_chi_1) REFERENCES public.tieu_chi(ma_tieu_chi);
+
+ALTER TABLE ONLY public.so_sanh_cap_ahp
+    ADD CONSTRAINT so_sanh_cap_ahp_tieu_chi_2_fkey
+    FOREIGN KEY (tieu_chi_2) REFERENCES public.tieu_chi(ma_tieu_chi);
+
+ALTER TABLE ONLY public.trong_so_tieu_chi
+    ADD CONSTRAINT trong_so_tieu_chi_ma_tieu_chi_fkey
+    FOREIGN KEY (ma_tieu_chi) REFERENCES public.tieu_chi(ma_tieu_chi);

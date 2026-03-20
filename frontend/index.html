@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hệ hỗ trợ lựa chọn nhà cung cấp</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-inner">
+      <div class="hero-left">
+        <div class="hero-badge">Hệ hỗ trợ ra quyết định lựa chọn nhà cung cấp</div>
+        <h1>Đánh giá, so sánh và chọn nhà cung cấp một cách minh bạch</h1>
+        <p>
+          Website hỗ trợ doanh nghiệp chuẩn hóa tiêu chí lựa chọn nhà cung cấp theo trọng số,
+          chấm điểm tự động, xếp hạng ưu tiên và hỗ trợ ra quyết định nhanh hơn.
+        </p>
+      </div>
+
+      <div class="hero-right">
+        <div class="kpi-card">
+          <div class="kpi-title">Tổng nhà cung cấp</div>
+          <div class="kpi-value" id="kpiTotalSuppliers">0</div>
+          <div class="kpi-desc">Nguồn cung đang được theo dõi</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-title">Nhà cung cấp tốt nhất</div>
+          <div class="kpi-value small" id="kpiBestSupplier">-</div>
+          <div class="kpi-desc" id="kpiBestScore">Chưa có dữ liệu</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-title">Mức phù hợp cao nhất</div>
+          <div class="kpi-value" id="kpiTopScore">-</div>
+          <div class="kpi-desc">Điểm tổng hợp</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-title">Tổng trọng số</div>
+          <div class="kpi-value" id="kpiTotalWeight">100%</div>
+          <div class="kpi-desc" id="kpiWeightStatus">Phân bổ hợp lệ</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="dashboard">Tổng quan</button>
+      <button class="tab-btn" data-tab="criteria">Tiêu chí</button>
+      <button class="tab-btn" data-tab="suppliers">Nhà cung cấp</button>
+      <button class="tab-btn" data-tab="recommendation">Khuyến nghị</button>
+    </div>
+
+    <!-- TAB: DASHBOARD -->
+    <section class="tab-panel active" id="dashboard">
+      <div class="grid-3">
+        <div class="card span-2">
+          <div class="card-header">
+            <h2>Xếp hạng nhà cung cấp</h2>
+            <p>Điểm tổng hợp theo trọng số hiện tại</p>
+          </div>
+          <div class="card-body">
+            <canvas id="rankingChart" height="120"></canvas>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>Nhà cung cấp đề xuất</h2>
+            <p>Ứng viên có điểm cao nhất hiện tại</p>
+          </div>
+          <div class="card-body">
+            <div id="bestSupplierBox" class="best-box">
+              Chưa có kết quả đánh giá.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h2>Hồ sơ nhà cung cấp tốt nhất</h2>
+            <p>Góc nhìn đa tiêu chí</p>
+          </div>
+          <div class="card-body">
+            <div style="height: 420px;">
+              <canvas id="radarChart"></canvas>
+            </div>
+            <div id="criteriaScoreSummary" class="criteria-score-summary">
+              Chưa có dữ liệu tiêu chí.
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>Tiêu chí đánh giá cốt lõi</h2>
+            <p>Khung đánh giá có thể tùy chỉnh theo nhu cầu doanh nghiệp</p>
+          </div>
+          <div class="card-body criteria-list">
+            <div class="mini-card">
+              <h3>Giá</h3>
+              <p>Chi phí cạnh tranh và tính ổn định báo giá</p>
+            </div>
+            <div class="mini-card">
+              <h3>Chất lượng</h3>
+              <p>Mức độ đáp ứng tiêu chuẩn kỹ thuật</p>
+            </div>
+            <div class="mini-card">
+              <h3>Giao hàng</h3>
+              <p>Đúng hạn, linh hoạt, năng lực logistics</p>
+            </div>
+            <div class="mini-card">
+              <h3>Uy tín</h3>
+              <p>Mức độ tin cậy và năng lực thực hiện</p>
+            </div>
+            <div class="mini-card">
+              <h3>Năng lực cung ứng</h3>
+              <p>Khả năng đáp ứng quy mô và tiến độ</p>
+            </div>
+            <div class="mini-card">
+              <h3>Dịch vụ hỗ trợ</h3>
+              <p>Phản hồi, hỗ trợ sau bán, xử lý sự cố</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: CRITERIA -->
+    <section class="tab-panel" id="criteria">
+      <div class="card">
+        <div class="card-header">
+          <h2>Tùy chỉnh trọng số tiêu chí</h2>
+          <p>Cho phép doanh nghiệp thay đổi mức ưu tiên theo chiến lược mua hàng</p>
+        </div>
+        <div class="card-body">
+          <div class="weights-grid" id="dynamicWeightsGrid"></div>
+
+          <div class="actions-row">
+            <div>
+              <strong>Tổng trọng số: <span id="totalWeightText">100</span>%</strong>
+              <p id="weightMessage" class="muted">Phân bổ đúng chuẩn. Hệ thống đang tính điểm tối ưu.</p>
+            </div>
+            <div class="actions-inline">
+              <button id="resetWeightsBtn" class="btn btn-outline">Đặt lại mặc định</button>
+              <button id="evaluateBtn" class="btn">Đánh giá nhà cung cấp</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: SUPPLIERS -->
+    <section class="tab-panel" id="suppliers">
+      <div class="card">
+        <div class="card-header">
+          <h2>Danh sách nhà cung cấp</h2>
+          <p>Lọc, tìm kiếm và so sánh nhanh các ứng viên</p>
+        </div>
+        <div class="card-body">
+          <div class="toolbar">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Tìm theo tên, địa chỉ, email..."
+            />
+            <button class="btn" id="refreshSuppliersBtn">Làm mới dữ liệu</button>
+          </div>
+
+          <div class="table-wrap">
+            <table id="supplierTable">
+              <thead>
+                <tr>
+                  <th>Mã</th>
+                  <th>Nhà cung cấp</th>
+                  <th>Địa chỉ</th>
+                  <th>Số điện thoại</th>
+                  <th>Email</th>
+                  <th>Điểm</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="card-body">
+            <div id="supplierDetailBox" class="recommendation-box">
+              Chọn một nhà cung cấp trong bảng để xem chi tiết.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: RECOMMENDATION -->
+    <section class="tab-panel" id="recommendation">
+      <div class="grid-3">
+        <div class="card span-2">
+          <div class="card-header">
+            <h2>Báo cáo đề xuất lựa chọn</h2>
+            <p>Kết luận ngắn gọn để hỗ trợ phê duyệt nội bộ</p>
+          </div>
+          <div class="card-body">
+            <div id="recommendationText" class="recommendation-box">
+              Chưa có dữ liệu đánh giá.
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>Hành động nhanh</h2>
+            <p>Các thao tác tiếp theo cho bản MVP</p>
+          </div>
+          <div class="card-body quick-actions">
+            <button class="btn">Thêm nhà cung cấp mới</button>
+            <button class="btn btn-outline">Xuất báo cáo đánh giá</button>
+            <button class="btn btn-outline">So sánh 2 nhà cung cấp</button>
+            <button class="btn btn-outline">Thiết lập quy tắc phê duyệt</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
