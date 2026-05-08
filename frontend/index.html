@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
@@ -12,10 +12,10 @@
     <div class="container hero-inner">
       <div class="hero-left">
         <div class="hero-badge">Hệ hỗ trợ ra quyết định lựa chọn nhà cung cấp</div>
-        <h1>Đánh giá, so sánh và chọn nhà cung cấp một cách minh bạch</h1>
+        <h1>Đánh giá, so sánh và chọn nhà cung cấp minh bạch hơn</h1>
         <p>
-          Website hỗ trợ doanh nghiệp chuẩn hóa tiêu chí lựa chọn nhà cung cấp theo trọng số,
-          chấm điểm tự động, xếp hạng ưu tiên và hỗ trợ ra quyết định nhanh hơn.
+          Website giúp doanh nghiệp chuẩn hóa tiêu chí, phân bổ trọng số, tính điểm
+          tự động và bổ sung ma trận AHP để ra quyết định nhanh và rõ ràng hơn.
         </p>
       </div>
 
@@ -48,20 +48,20 @@
   </header>
 
   <main class="container main-content">
-    <div class="tabs">
+    <div class="tabs five-tabs">
       <button class="tab-btn active" data-tab="dashboard">Tổng quan</button>
       <button class="tab-btn" data-tab="criteria">Tiêu chí</button>
+      <button class="tab-btn" data-tab="ahp">Ma trận trọng số</button>
       <button class="tab-btn" data-tab="suppliers">Nhà cung cấp</button>
       <button class="tab-btn" data-tab="recommendation">Khuyến nghị</button>
     </div>
 
-    <!-- TAB: DASHBOARD -->
     <section class="tab-panel active" id="dashboard">
       <div class="grid-3">
         <div class="card span-2">
           <div class="card-header">
             <h2>Xếp hạng nhà cung cấp</h2>
-            <p>Điểm tổng hợp theo trọng số hiện tại</p>
+            <p>Điểm tổng hợp theo bộ trọng số hiện tại</p>
           </div>
           <div class="card-body">
             <canvas id="rankingChart" height="120"></canvas>
@@ -74,9 +74,7 @@
             <p>Ứng viên có điểm cao nhất hiện tại</p>
           </div>
           <div class="card-body">
-            <div id="bestSupplierBox" class="best-box">
-              Chưa có kết quả đánh giá.
-            </div>
+            <div id="bestSupplierBox" class="best-box">Chưa có kết quả đánh giá.</div>
           </div>
         </div>
       </div>
@@ -88,7 +86,7 @@
             <p>Góc nhìn đa tiêu chí</p>
           </div>
           <div class="card-body">
-            <div style="height: 420px;">
+            <div class="chart-box">
               <canvas id="radarChart"></canvas>
             </div>
             <div id="criteriaScoreSummary" class="criteria-score-summary">
@@ -132,7 +130,6 @@
       </div>
     </section>
 
-    <!-- TAB: CRITERIA -->
     <section class="tab-panel" id="criteria">
       <div class="card">
         <div class="card-header">
@@ -149,27 +146,71 @@
             </div>
             <div class="actions-inline">
               <button id="resetWeightsBtn" class="btn btn-outline">Đặt lại mặc định</button>
+              <button id="applyAHPWeightsBtn" class="btn btn-outline">Nạp trọng số AHP</button>
               <button id="evaluateBtn" class="btn">Đánh giá nhà cung cấp</button>
+            </div>
+          </div>
+          <div class="criteria-score-summary">
+            <h3>So sánh tiêu chí Top 1 với Top 2, Top 3</h3>
+            <div id="weightComparisonBox" class="criteria-score-summary">
+              Chưa có dữ liệu so sánh tiêu chí.
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TAB: SUPPLIERS -->
+    <section class="tab-panel" id="ahp">
+      <div class="card">
+        <div class="card-header">
+          <h2>Ma trận so sánh cặp AHP</h2>
+          <p>Thiết lập mức quan trọng tương đối giữa các tiêu chí theo thang điểm AHP</p>
+        </div>
+        <div class="card-body">
+          <div class="ahp-toolbar">
+            <div class="ahp-note">
+              Nhập giá trị &gt; 1 nếu tiêu chí hàng quan trọng hơn tiêu chí cột. Ô đối xứng
+              sẽ được cập nhật tự động theo nghịch đảo.
+            </div>
+            <div class="actions-inline">
+              <button id="resetAHPBtn" class="btn btn-outline">Khởi tạo lại ma trận</button>
+              <button id="saveAHPBtn" class="btn">Lưu trọng số AHP</button>
+            </div>
+          </div>
+
+          <div class="matrix-wrap" id="ahpMatrixContainer">
+            <div class="recommendation-box">Đang tải ma trận AHP...</div>
+          </div>
+
+          <div class="grid-2 ahp-results">
+            <div class="best-box">
+              <h3>Kết quả kiểm tra</h3>
+              <p><strong>Lambda max:</strong> <span id="ahpLambdaMax">-</span></p>
+              <p><strong>CI:</strong> <span id="ahpCI">-</span></p>
+              <p><strong>CR:</strong> <span id="ahpCR">-</span></p>
+              <p id="ahpConsistencyMessage" class="muted">Chưa tính độ nhất quán.</p>
+            </div>
+
+            <div class="best-box">
+              <h3>Trọng số đã lưu</h3>
+              <div id="ahpWeightsSummary" class="criteria-score-summary">
+                Chưa có trọng số AHP được lưu.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="tab-panel" id="suppliers">
       <div class="card">
         <div class="card-header">
           <h2>Danh sách nhà cung cấp</h2>
-          <p>Lọc, tìm kiếm và so sánh nhanh các ứng viên</p>
+          <p>Lọc, tìm kiếm, chỉnh sửa và xem chi tiết hồ sơ từng nhà cung cấp</p>
         </div>
         <div class="card-body">
           <div class="toolbar">
-            <input
-              type="text"
-              id="searchInput"
-              placeholder="Tìm theo tên, địa chỉ, email..."
-            />
+            <input type="text" id="searchInput" placeholder="Tìm theo tên, địa chỉ, email..." />
             <button class="btn" id="refreshSuppliersBtn">Làm mới dữ liệu</button>
           </div>
 
@@ -190,46 +231,99 @@
             </table>
           </div>
 
-          <div class="card-body">
+          <div class="supplier-workspace">
             <div id="supplierDetailBox" class="recommendation-box">
               Chọn một nhà cung cấp trong bảng để xem chi tiết.
             </div>
+
+            <form id="supplierForm" class="supplier-form">
+              <div class="card-header">
+                <h2>Cập nhật thông tin nhà cung cấp</h2>
+                <p>Chọn một nhà cung cấp trong bảng, chỉnh sửa và lưu trực tiếp.</p>
+              </div>
+
+              <input type="hidden" id="supplierIdInput" />
+
+              <div class="supplier-form-grid">
+                <div class="weight-item">
+                  <label for="supplierNameInput">Tên nhà cung cấp</label>
+                  <input type="text" id="supplierNameInput" placeholder="Nhập tên nhà cung cấp" />
+                </div>
+
+                <div class="weight-item">
+                  <label for="supplierPhoneInput">Số điện thoại</label>
+                  <input type="text" id="supplierPhoneInput" placeholder="Nhập số điện thoại" />
+                </div>
+
+                <div class="weight-item supplier-form-span-2">
+                  <label for="supplierAddressInput">Địa chỉ</label>
+                  <input type="text" id="supplierAddressInput" placeholder="Nhập địa chỉ" />
+                </div>
+
+                <div class="weight-item supplier-form-span-2">
+                  <label for="supplierEmailInput">Email</label>
+                  <input type="email" id="supplierEmailInput" placeholder="Nhập email liên hệ" />
+                </div>
+
+                <div class="weight-item supplier-form-span-2">
+                  <label for="supplierDescriptionInput">Mô tả</label>
+                  <textarea id="supplierDescriptionInput" rows="5" placeholder="Nhập mô tả, thế mạnh và ghi chú về nhà cung cấp"></textarea>
+                </div>
+              </div>
+
+              <div class="actions-row">
+                <div>
+                  <strong id="supplierFormTitle">Chưa chọn nhà cung cấp</strong>
+                  <p id="supplierFormMessage" class="muted">Chọn một dòng trong bảng để nạp thông tin và chỉnh sửa.</p>
+                </div>
+                <div class="actions-inline">
+                  <button type="button" id="resetSupplierFormBtn" class="btn btn-outline">Đặt lại form</button>
+                  <button type="submit" id="saveSupplierBtn" class="btn">Lưu thông tin</button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TAB: RECOMMENDATION -->
     <section class="tab-panel" id="recommendation">
-      <div class="grid-3">
-        <div class="card span-2">
-          <div class="card-header">
-            <h2>Báo cáo đề xuất lựa chọn</h2>
-            <p>Kết luận ngắn gọn để hỗ trợ phê duyệt nội bộ</p>
-          </div>
-          <div class="card-body">
-            <div id="recommendationText" class="recommendation-box">
-              Chưa có dữ liệu đánh giá.
+      <div class="card">
+        <div class="card-header">
+          <h2>Báo cáo đề xuất lựa chọn</h2>
+          <p>Kết luận ngắn gọn để hỗ trợ phê duyệt nội bộ</p>
+        </div>
+        <div class="card-body">
+          <div class="comparison-selectors">
+            <div class="comparison-selector-item">
+              <label for="aiCompareSupplierA">NCC A</label>
+              <select id="aiCompareSupplierA"></select>
+            </div>
+            <div class="comparison-selector-item">
+              <label for="aiCompareSupplierB">NCC B</label>
+              <select id="aiCompareSupplierB"></select>
+            </div>
+            <div class="comparison-selector-item">
+              <label>&nbsp;</label>
+              <button id="aiCompareBtn" class="btn">So sánh AI theo cặp</button>
             </div>
           </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <h2>Hành động nhanh</h2>
-            <p>Các thao tác tiếp theo cho bản MVP</p>
-          </div>
-          <div class="card-body quick-actions">
-            <button class="btn">Thêm nhà cung cấp mới</button>
-            <button class="btn btn-outline">Xuất báo cáo đánh giá</button>
-            <button class="btn btn-outline">So sánh 2 nhà cung cấp</button>
-            <button class="btn btn-outline">Thiết lập quy tắc phê duyệt</button>
+          <div id="recommendationText" class="recommendation-box">Chưa có dữ liệu đánh giá.</div>
+          <div id="aiCompareResultBox" class="recommendation-box" style="margin-top: 14px;">
+            Chưa có kết quả so sánh cặp.
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <script src="js/app.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/weights.js"></script>
+  <script src="js/suppliers.js"></script>
+  <script src="js/ahp.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
+

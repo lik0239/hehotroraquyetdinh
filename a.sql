@@ -1,4 +1,4 @@
---
+﻿--
 -- PostgreSQL database dump
 --
 
@@ -826,41 +826,41 @@ COPY public.ket_qua_quyet_dinh (ma_ket_qua, ma_ncc, diem_ahp, du_doan_rf, diem_t
 --
 
 COPY public.nha_cung_cap (ma_ncc, ten_ncc, dia_chi, so_dien_thoai, email, mo_ta) FROM stdin;
-1	Nhà cung cấp 1	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-2	Nhà cung cấp 2	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-3	Nhà cung cấp 3	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-4	Nhà cung cấp 4	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-5	Nhà cung cấp 5	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-6	Nhà cung cấp 6	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-7	Nhà cung cấp 7	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-8	Nhà cung cấp 8	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-9	Nhà cung cấp 9	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-10	Nhà cung cấp 10	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-11	Nhà cung cấp 11	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-12	Nhà cung cấp 12	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-13	Nhà cung cấp 13	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-14	Nhà cung cấp 14	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-15	Nhà cung cấp 15	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-16	Nhà cung cấp 16	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-17	Nhà cung cấp 17	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-18	Nhà cung cấp 18	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-19	Nhà cung cấp 19	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-20	Nhà cung cấp 20	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-21	Nhà cung cấp 21	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-22	Nhà cung cấp 22	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-23	Nhà cung cấp 23	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-24	Nhà cung cấp 24	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-25	Nhà cung cấp 25	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-26	Nhà cung cấp 26	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-27	Nhà cung cấp 27	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-28	Nhà cung cấp 28	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-29	Nhà cung cấp 29	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-30	Nhà cung cấp 30	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-31	Nhà cung cấp 31	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-32	Nhà cung cấp 32	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-33	Nhà cung cấp 33	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-34	Nhà cung cấp 34	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
-35	Nhà cung cấp 35	\N	\N	\N	Import từ supplier_ranking_grades.xlsx
+1	NhÃ  cung cáº¥p 1	Dia chi so 1, Quan 1, TP.HCM	0900100001	ncc1@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+2	NhÃ  cung cáº¥p 2	Dia chi so 2, Quan 2, TP.HCM	0900100002	ncc2@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+3	NhÃ  cung cáº¥p 3	Dia chi so 3, Quan 3, TP.HCM	0900100003	ncc3@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+4	NhÃ  cung cáº¥p 4	Dia chi so 4, Quan 4, TP.HCM	0900100004	ncc4@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+5	NhÃ  cung cáº¥p 5	Dia chi so 5, Quan 5, TP.HCM	0900100005	ncc5@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+6	NhÃ  cung cáº¥p 6	Dia chi so 6, Quan 6, TP.HCM	0900100006	ncc6@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+7	NhÃ  cung cáº¥p 7	Dia chi so 7, Quan 7, TP.HCM	0900100007	ncc7@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+8	NhÃ  cung cáº¥p 8	Dia chi so 8, Quan 8, TP.HCM	0900100008	ncc8@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+9	NhÃ  cung cáº¥p 9	Dia chi so 9, Quan 9, TP.HCM	0900100009	ncc9@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+10	NhÃ  cung cáº¥p 10	Dia chi so 10, Quan 10, TP.HCM	0900100010	ncc10@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+11	NhÃ  cung cáº¥p 11	Dia chi so 11, Quan 11, TP.HCM	0900100011	ncc11@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+12	NhÃ  cung cáº¥p 12	Dia chi so 12, Quan 1, TP.HCM	0900100012	ncc12@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+13	NhÃ  cung cáº¥p 13	Dia chi so 13, Quan 1, TP.HCM	0900100013	ncc13@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+14	NhÃ  cung cáº¥p 14	Dia chi so 14, Quan 2, TP.HCM	0900100014	ncc14@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+15	NhÃ  cung cáº¥p 15	Dia chi so 15, Quan 3, TP.HCM	0900100015	ncc15@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+16	NhÃ  cung cáº¥p 16	Dia chi so 16, Quan 4, TP.HCM	0900100016	ncc16@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+17	NhÃ  cung cáº¥p 17	Dia chi so 17, Quan 5, TP.HCM	0900100017	ncc17@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+18	NhÃ  cung cáº¥p 18	Dia chi so 18, Quan 6, TP.HCM	0900100018	ncc18@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+19	NhÃ  cung cáº¥p 19	Dia chi so 19, Quan 7, TP.HCM	0900100019	ncc19@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+20	NhÃ  cung cáº¥p 20	Dia chi so 20, Quan 8, TP.HCM	0900100020	ncc20@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+21	NhÃ  cung cáº¥p 21	Dia chi so 21, Quan 9, TP.HCM	0900100021	ncc21@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+22	NhÃ  cung cáº¥p 22	Dia chi so 22, Quan 10, TP.HCM	0900100022	ncc22@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+23	NhÃ  cung cáº¥p 23	Dia chi so 23, Quan 11, TP.HCM	0900100023	ncc23@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+24	NhÃ  cung cáº¥p 24	Dia chi so 24, Quan 1, TP.HCM	0900100024	ncc24@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+25	NhÃ  cung cáº¥p 25	Dia chi so 25, Quan 1, TP.HCM	0900100025	ncc25@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+26	NhÃ  cung cáº¥p 26	Dia chi so 26, Quan 2, TP.HCM	0900100026	ncc26@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+27	NhÃ  cung cáº¥p 27	Dia chi so 27, Quan 3, TP.HCM	0900100027	ncc27@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+28	NhÃ  cung cáº¥p 28	Dia chi so 28, Quan 4, TP.HCM	0900100028	ncc28@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+29	NhÃ  cung cáº¥p 29	Dia chi so 29, Quan 5, TP.HCM	0900100029	ncc29@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+30	NhÃ  cung cáº¥p 30	Dia chi so 30, Quan 6, TP.HCM	0900100030	ncc30@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+31	NhÃ  cung cáº¥p 31	Dia chi so 31, Quan 7, TP.HCM	0900100031	ncc31@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+32	NhÃ  cung cáº¥p 32	Dia chi so 32, Quan 8, TP.HCM	0900100032	ncc32@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+33	NhÃ  cung cáº¥p 33	Dia chi so 33, Quan 9, TP.HCM	0900100033	ncc33@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+34	NhÃ  cung cáº¥p 34	Dia chi so 34, Quan 10, TP.HCM	0900100034	ncc34@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
+35	NhÃ  cung cáº¥p 35	Dia chi so 35, Quan 11, TP.HCM	0900100035	ncc35@supplier.vn	Import tá»« supplier_ranking_grades.xlsx
 \.
 
 
@@ -881,18 +881,18 @@ COPY public.so_sanh_cap_ahp (ma_so_sanh, tieu_chi_1, tieu_chi_2, gia_tri) FROM s
 --
 
 COPY public.tieu_chi (ma_tieu_chi, ten_tieu_chi, mo_ta) FROM stdin;
-1	quality	Chất lượng
-2	quantity	Số lượng
-3	conditions_and_method_of_payment	Điều kiện và phương thức thanh toán
-4	serviceability_and_communicativeness_of_the_supplier	Khả năng phục vụ và giao tiếp của nhà cung cấp
-5	reputation_of_the_supplier_and_its_competence	Uy tín và năng lực của nhà cung cấp
-6	flexibility	Tính linh hoạt
-7	financial_condition_of_the_supplier	Tình hình tài chính của nhà cung cấp
-8	condition_of_the_supplier_assets	Tình trạng tài sản của nhà cung cấp
-9	business_results_and_number_of_employees	Kết quả kinh doanh và số lượng nhân viên
-10	price	Giá
-11	delivery_time	Thời gian giao hàng
-12	supplier_location_and_traffic_connections	Vị trí và kết nối giao thông của nhà cung cấp
+1	quality	Cháº¥t lÆ°á»£ng
+2	quantity	Sá»‘ lÆ°á»£ng
+3	conditions_and_method_of_payment	Äiá»u kiá»‡n vÃ  phÆ°Æ¡ng thá»©c thanh toÃ¡n
+4	serviceability_and_communicativeness_of_the_supplier	Kháº£ nÄƒng phá»¥c vá»¥ vÃ  giao tiáº¿p cá»§a nhÃ  cung cáº¥p
+5	reputation_of_the_supplier_and_its_competence	Uy tÃ­n vÃ  nÄƒng lá»±c cá»§a nhÃ  cung cáº¥p
+6	flexibility	TÃ­nh linh hoáº¡t
+7	financial_condition_of_the_supplier	TÃ¬nh hÃ¬nh tÃ i chÃ­nh cá»§a nhÃ  cung cáº¥p
+8	condition_of_the_supplier_assets	TÃ¬nh tráº¡ng tÃ i sáº£n cá»§a nhÃ  cung cáº¥p
+9	business_results_and_number_of_employees	Káº¿t quáº£ kinh doanh vÃ  sá»‘ lÆ°á»£ng nhÃ¢n viÃªn
+10	price	GiÃ¡
+11	delivery_time	Thá»i gian giao hÃ ng
+12	supplier_location_and_traffic_connections	Vá»‹ trÃ­ vÃ  káº¿t ná»‘i giao thÃ´ng cá»§a nhÃ  cung cáº¥p
 \.
 
 
